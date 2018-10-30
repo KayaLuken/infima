@@ -4,17 +4,15 @@ import sys
 
 
 class Piece:
-    def __init__(self, ):
-        pass
+    def __init__(self, player):
+        self.player = player
 
 
 class Captor(Piece):
-    def __init__(self, ):
-        pass
+    pass
 
 class Displacor(Piece):
-    def __init__(self, ):
-        pass
+    pass
 
 
 class Effector(Piece):
@@ -25,7 +23,15 @@ class Advancer(Captor):
     pass
 
 
-class Replacer(Captor):
+class Archer(Captor):
+    pass
+
+
+class Blocker(Effector):
+    pass
+
+
+class Immobiliser(Effector):
     pass
 
 
@@ -37,8 +43,13 @@ class LongReplacer(Captor):
     pass
 
 
-class Immobiliser(Effector):
+class Neutraliser(Effector):
     pass
+
+
+class Replacer(Captor):
+    pass
+
 
 
 def get_pieces():
