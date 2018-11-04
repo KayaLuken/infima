@@ -21,9 +21,13 @@ class Game:
         self.current_player = self.players[0]
 
 
-    def move(self, directions):
-        start_position = directions[0]
-        self.is_correct_player(start_position)
+    def update_board(self, directions):
+        start_position, target_position = directions[0], directions[1]
+        if not self.is_correct_player(start_position):
+            return
+        current_piece = self.board[start_position[1]][start_position[0]]
+        if not current_piece.is_correct_displacement(start_position, target_position):
+            return
 
 
 
