@@ -18,6 +18,19 @@ class Game:
         empty_board = self.create_board(width, length)
         self.board = self.fill_board(empty_board, number_of_pieces, pieces)
 
+        self.current_player = self.players[0]
+
+
+    def move(self, directions):
+        start_position = directions[0]
+        self.is_correct_player(start_position)
+
+
+
+
+    def is_correct_player(self, position):
+        return self.board[position[1]][position[0]].player == self.current_player
+
 
     @staticmethod
     def create_board(width, length):
@@ -38,3 +51,7 @@ class Game:
             board[j][i] = piece_to_add(Game.players[0])
             board[-(j+1)][i] = piece_to_add(Game.players[1])
         return board
+
+
+    def naive_update(self):
+        pass

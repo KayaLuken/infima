@@ -18,6 +18,10 @@ class Displacor(Piece):
 class Effector(Piece):
     pass
 
+class Enplacor(Piece):
+    pass
+
+
 
 class Advancer(Captor):
     pass
@@ -31,7 +35,7 @@ class Blocker(Effector):
     pass
 
 
-class Immobiliser(Effector):
+class Immobiliser(Enplacor):
     pass
 
 

@@ -1,12 +1,13 @@
 
 import pytest
 
+from .fixtures import game_no_init
 from ..game import Game
-from ..pieces import Advancer, Blocker, Immobiliser, LongLeaper, Neutraliser
+from ..pieces import Piece, Advancer, Blocker, Immobiliser, LongLeaper, Neutraliser
 from ..consts import MAX_PIECE_DENSITY, MIN_PIECE_DENSITY, MIN_GAME_DIMENSION
 
 
-class TestGameCreation:
+class TestGameCreationParameterValidation:
 
     def test_too_low_length_value_raises_error(self):
         with pytest.raises(ValueError) as excinfo:
@@ -61,3 +62,11 @@ class TestBoardSetup:
             assert all([piece_instance.player == player_for_rank for piece_instance in filled_board[rank_index]
                         if piece_instance is not None])
 
+
+class TestBoardUpdate:
+
+    def test_is_correct_player(self, game_no_init):
+        game_no_init.board = [
+            [Piece(game_no_init.players[0]), Piece(game_no_init.players[1])] ]
+        assert game_no_init.is_correct_player((0, 0))
+        assert not game_no_init.is_correct_player((1, 0))
