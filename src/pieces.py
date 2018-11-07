@@ -2,11 +2,24 @@
 import inspect
 import sys
 
+from .utils import get_intermediate_and_final_coordinates
+
 
 class Piece:
     def __init__(self, player):
         self.player = player
 
+
+
+    @staticmethod
+    def is_valid_move(board, start, finish):
+        return Piece.is_correct_displacement(start,finish)\
+               and Piece.is_unobstructed(board, start, finish)
+
+    @staticmethod
+    def is_unobstructed(board, start, finish):
+        print(get_intermediate_and_final_coordinates(start, finish))
+        return  all(map(lambda c: board[c[1]][c[0]] is None, get_intermediate_and_final_coordinates(start, finish)))
 
     @staticmethod
     def is_correct_displacement(start, finish):
