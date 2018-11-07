@@ -17,7 +17,7 @@ class TestPiece:
 
 
     def test_is_correct_displacement_true(self):
-        assert Piece.is_correct_displacement( (0, 0), (10, 10) ) # diagonal
+        assert Piece.is_correct_displacement( (10, 0), (0, 10) ) # diagonal
         assert Piece.is_correct_displacement( (0, 0), (0, 10) ) # othogonal
 
     def test_is_correct_displacement_false(self):

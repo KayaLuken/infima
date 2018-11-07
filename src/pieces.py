@@ -25,7 +25,7 @@ class Piece:
     def is_correct_displacement(start, finish):
         '''default is straight line movement'''
         x0, y0, x1, y1 = start[0], start[1], finish[0], finish[1]
-        is_straight_diagonal = x1 - x0 == y1 - y0
+        is_straight_diagonal = abs(x1 - x0) == abs(y1 - y0)
         is_straight_orthogonal = x0 == x1 or y0 == y1
         return is_straight_diagonal or is_straight_orthogonal
 
