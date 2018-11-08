@@ -28,7 +28,7 @@ class Game:
         current_piece = self.board[start_position[1]][start_position[0]]
         if not current_piece.is_valid_move(self.board, start_position, target_position):
             return
-
+        updates = current_piece.move(self.board, directions)
 
 
 

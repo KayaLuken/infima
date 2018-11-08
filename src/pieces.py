@@ -1,6 +1,7 @@
 
 import inspect
 import sys
+import typing as tp
 
 from .utils import get_intermediate_and_final_coordinates
 
@@ -9,7 +10,12 @@ class Piece:
     def __init__(self, player):
         self.player = player
 
-
+    def move(self, board, directions) -> tp.List[list]:
+        '''Offers naive update of board given directions and minimal information of board state'''
+        start, finish = directions[0], directions[1]
+        board[start[1]][start[0]] = None
+        board[finish[1]][finish[0]] = self
+        return board
 
     @staticmethod
     def is_valid_move(board, start, finish):
@@ -18,7 +24,6 @@ class Piece:
 
     @staticmethod
     def is_unobstructed(board, start, finish):
-        print(get_intermediate_and_final_coordinates(start, finish))
         return  all(map(lambda c: board[c[1]][c[0]] is None, get_intermediate_and_final_coordinates(start, finish)))
 
     @staticmethod

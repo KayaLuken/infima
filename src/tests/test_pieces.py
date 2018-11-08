@@ -38,3 +38,9 @@ class TestPiece:
         ]
         assert Piece.is_unobstructed(un_obstructed_board, (0, 0), (2, 2))
         assert Piece.is_unobstructed(un_obstructed_board, (0, 0), (1, 1))
+
+    def test_updates_board_with_simple_piece_move(self):
+        piece = Piece(None)
+        board = [ [piece, None] ]
+        updated_board = piece.move(board, [(0, 0), (1, 0)])
+        assert updated_board == [ [None, piece] ]
