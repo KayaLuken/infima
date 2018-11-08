@@ -3,7 +3,7 @@ import inspect
 import sys
 import typing as tp
 
-from .utils import get_intermediate_and_final_coordinates
+from .utils import intermediate_and_final_coordinates
 
 
 class Piece:
@@ -24,7 +24,7 @@ class Piece:
 
     @staticmethod
     def is_unobstructed(board, start, finish):
-        return  all(map(lambda c: board[c[1]][c[0]] is None, get_intermediate_and_final_coordinates(start, finish)))
+        return  all(map(lambda c: board[c[1]][c[0]] is None, intermediate_and_final_coordinates(start, finish)))
 
     @staticmethod
     def is_correct_displacement(start, finish):
